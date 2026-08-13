@@ -18,7 +18,7 @@
   <script>
   (async()=>{
     try{
-      const V='20260813-0852';
+      const V='20260813-0905';
       const files=['data/data_00a.txt','data/data_00b.txt','data/data_01.txt','data/data_02.txt','data/data_03a.txt','data/data_03b.txt','data/data_04.txt','data/data_05.txt','data/data_06.txt','data/data_07.txt','data/data_08.txt','data/data_09.txt','data/data_10a.txt','data/data_10b.txt','data/data_11a.txt','data/data_11b.txt','data/data_12.txt','data/data_13.txt'];
       const parts=await Promise.all(files.map((f,i)=>fetch(f+'?v='+V,{cache:'no-store'}).then(r=>{
         if(!r.ok) throw new Error(`Не загружен фрагмент ${i}: HTTP ${r.status}`);
@@ -29,10 +29,9 @@
       const html=await new Response(new Blob([bin]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
       const parser=new DOMParser();
       const doc=parser.parseFromString(html,'text/html');
-      const addon=doc.createElement('script'); addon.src='assets/live-addon-20260813.js?v='+V; doc.body.appendChild(addon);
-      const oxfordAddon=doc.createElement('script'); oxfordAddon.src='assets/oxford-prison-addon-20260813.js?v='+V; doc.body.appendChild(oxfordAddon);
-      const runnymedeAddon=doc.createElement('script'); runnymedeAddon.src='assets/runnymede-addon-20260813.js?v='+V; doc.body.appendChild(runnymedeAddon);
-      const lang=doc.createElement('script'); lang.src='assets/lang-switch-20260813.js?v='+V; doc.body.appendChild(lang);
+      for(const src of ['assets/live-addon-20260813.js','assets/oxford-prison-addon-20260813.js','assets/runnymede-addon-20260813.js','assets/final-trip-addon-20260813.js','assets/lang-switch-20260813.js']){
+        const s=doc.createElement('script'); s.src=src+'?v='+V; doc.body.appendChild(s);
+      }
       document.open();
       document.write('<!doctype html>'+doc.documentElement.outerHTML);
       document.close();
