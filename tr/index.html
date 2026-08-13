@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>İngiltere · 12–20 Ağustos 2026</title>
+  <style>body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:#f7f5ef;color:#17202a}.load{min-height:100vh;display:grid;place-items:center;padding:32px;text-align:center;box-sizing:border-box}.load b{display:block;font-size:22px;margin-bottom:8px}.load span{color:#687078}</style>
+</head>
+<body>
+<div class="load"><div><b>İngiltere · 12–20 Ağustos</b><span>Rehber yükleniyor…</span></div></div>
+<script>
+(async()=>{try{
+ const V='20260813-0852';
+ const files=['data/tr_00.txt'];
+ const parts=await Promise.all(files.map((f,i)=>fetch(f+'?v='+V,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(`Bölüm ${i} yüklenemedi: HTTP ${r.status}`);return r.text();})));
+ const b64=parts.join('').replace(/\s/g,'');
+ const bin=Uint8Array.from(atob(b64),c=>c.charCodeAt(0));
+ const html=await new Response(new Blob([bin]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
+ const parser=new DOMParser(); const doc=parser.parseFromString(html,'text/html');
+ const lang=doc.createElement('script');lang.src='../assets/lang-switch-20260813.js?v='+V;doc.body.appendChild(lang);
+ document.open();document.write('<!doctype html>'+doc.documentElement.outerHTML);document.close();
+}catch(e){console.error(e);document.body.innerHTML='<div class="load"><div><b>Rehber yüklenemedi</b><span>'+String(e)+'</span></div></div>';}})();
+</script>
+</body>
+</html>
