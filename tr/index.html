@@ -13,14 +13,14 @@
 <div class="load"><div><b>İngiltere · 12–20 Ağustos</b><span>Rehber yükleniyor…</span></div></div>
 <script>
 (async()=>{try{
- const V='20260813-0852';
+ const V='20260813-0905';
  const files=['data/tr_00.txt'];
  const parts=await Promise.all(files.map((f,i)=>fetch(f+'?v='+V,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(`Bölüm ${i} yüklenemedi: HTTP ${r.status}`);return r.text();})));
  const b64=parts.join('').replace(/\s/g,'');
  const bin=Uint8Array.from(atob(b64),c=>c.charCodeAt(0));
  const html=await new Response(new Blob([bin]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
  const parser=new DOMParser(); const doc=parser.parseFromString(html,'text/html');
- const lang=doc.createElement('script');lang.src='../assets/lang-switch-20260813.js?v='+V;doc.body.appendChild(lang);
+ for(const src of ['../assets/tr-latest-addon-20260813.js','../assets/lang-switch-20260813.js']){const s=doc.createElement('script');s.src=src+'?v='+V;doc.body.appendChild(s);}
  document.open();document.write('<!doctype html>'+doc.documentElement.outerHTML);document.close();
 }catch(e){console.error(e);document.body.innerHTML='<div class="load"><div><b>Rehber yüklenemedi</b><span>'+String(e)+'</span></div></div>';}})();
 </script>
