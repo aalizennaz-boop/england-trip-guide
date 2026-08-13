@@ -1,0 +1,53 @@
+(() => {
+  'use strict';
+  const oxford = document.getElementById('oxford');
+  if (!oxford || document.getElementById('oxford-prison-live')) return;
+
+  const style = document.createElement('style');
+  style.textContent = `
+    #oxford-prison-live{margin:22px 0 30px;scroll-margin-top:90px}
+    #oxford-prison-live .op-head{margin:0 0 14px}
+    #oxford-prison-live .op-kicker{font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#69727a;margin-bottom:7px}
+    #oxford-prison-live h2{margin:0 0 8px;font-size:25px;line-height:1.2}
+    #oxford-prison-live .op-lead{margin:0;line-height:1.6;color:#3f4850}
+    #oxford-prison-live .op-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+    #oxford-prison-live .op-card{background:#fff;border:1px solid rgba(23,32,42,.12);border-radius:18px;padding:18px;box-shadow:0 8px 24px rgba(23,32,42,.055)}
+    #oxford-prison-live .op-card.wide{grid-column:1/-1}
+    #oxford-prison-live h3{margin:0 0 9px;font-size:19px;line-height:1.3}
+    #oxford-prison-live p,#oxford-prison-live li{line-height:1.55}
+    #oxford-prison-live p{margin:0 0 10px}
+    #oxford-prison-live ul,#oxford-prison-live ol{margin:7px 0 10px;padding-left:20px}
+    #oxford-prison-live .op-route,#oxford-prison-live .op-note{border-radius:12px;padding:11px 13px;margin:12px 0;font-size:14px;line-height:1.5}
+    #oxford-prison-live .op-route{background:#f4f2ec}.op-note{background:#fff6dc;border:1px solid #eadba9}
+    #oxford-prison-live .op-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+    #oxford-prison-live .op-actions a{display:inline-block;padding:9px 12px;border-radius:999px;text-decoration:none;font-size:13px;font-weight:700;border:1px solid rgba(23,32,42,.16);color:#17202a;background:#fff}
+    #oxford-prison-live .op-actions a:first-child{background:#17202a;color:#fff;border-color:#17202a}
+    @media(max-width:720px){#oxford-prison-live .op-grid{grid-template-columns:1fr}#oxford-prison-live .op-card.wide{grid-column:auto}#oxford-prison-live h2{font-size:22px}}
+  `;
+  document.head.appendChild(style);
+
+  const sec = document.createElement('div');
+  sec.id = 'oxford-prison-live';
+  sec.className = 'searchable';
+  sec.dataset.search = 'oxford castle prison malmaison prison hotel jail cell guided tour ghost tour spectre jailbreak murder mystery prison cell tower crypt';
+  sec.innerHTML = `
+    <div class="op-head"><div class="op-kicker">Oxford · 15 августа · обязательно оставить время</div><h2>Oxford Castle & Prison + Malmaison: настоящая тюрьма, которая стала отелем</h2><p class="op-lead">Это не декорация «под тюрьму». Malmaison занимает бывшую HM Prison Oxford, закрытую в 1996 году: длинные тюремные галереи, чугунные балюстрады, тяжёлые двери с глазками и часть бывших камер сохранены в архитектуре отеля. Рядом находится историческая часть Oxford Castle & Prison, куда уже идут на экскурсию как в музей. Два опыта лучше объединить: сначала реальная история заключённых, башня и крипта — потом зайти в бывший тюремный блок, превращённый в boutique hotel.</p></div>
+    <div class="op-grid">
+      <article class="op-card wide searchable" data-search="guided tour oxford castle prison tower crypt cells price"><div class="op-kicker">Лучший вариант именно для 15 августа · 1–2 часа</div><h3>1. Oxford Castle & Prison Guided Tour — это я бы поставила в программу</h3><p>Вход в историческую часть — только с экскурсоводом. Костюмированный гид ведёт через почти тысячу лет истории: от нормандского замка и средневекового Oxford до Georgian/Victorian prison. Вы поднимаетесь по 101 ступени <strong>St George’s Tower</strong> ради панорамы города, спускаетесь в полутёмную нормандскую крипту, заходите в старые камеры и потом можете самостоятельно досмотреть тюремную экспозицию.</p><p><strong>Стоимость 2026:</strong> взрослый £19.50, студент £18.50, ребёнок £12.50; при покупке до полуночи предыдущего дня заявлена экономия 10%. Основная экскурсия ≈50 минут, но на всё место лучше заложить 1–1,5 часа.</p><div class="op-route"><strong>Как встроить в наш Oxford:</strong> оптимально ловить слот примерно <strong>15:40–16:20</strong> (по наличию) → закончить около 17:00–17:30 → перейти буквально через Castle Quarter в Malmaison → бар/ранний ужин → к 18:45 уже быть во дворе на Romeo & Juliet.</div><div class="op-actions"><a href="https://www.oxfordcastleandprison.co.uk/whats-on/oxford-castle-prison-guided-tour/" target="_blank" rel="noopener">Guided Tour / билеты</a><a href="https://www.google.com/maps/search/?api=1&query=Oxford+Castle+and+Prison" target="_blank" rel="noopener">Карта</a></div></article>
+
+      <article class="op-card searchable" data-search="malmaison oxford prison hotel cell room a wing"><div class="op-kicker">30–60 минут без проживания · бар с 13:00 в субботу</div><h3>2. Malmaison Oxford — бывший тюремный блок, а не тематический отель</h3><p>Самое интересное здесь — не интерьерный трюк, а то, насколько мало спрятали старую тюрьму. В A‑Wing сохранилась геометрия камер, старые тяжёлые двери и длинные ярусы с железными ограждениями. Многие номера действительно занимают бывшие камеры; категории так и называются <strong>Standard Cell Room</strong> и <strong>Club Cell Room</strong>.</p><p>Внутрь номера без брони, разумеется, не попасть, но в общественные зоны и <strong>Chez Mal Bar</strong> можно зайти как в обычный отель. В субботу бар открыт примерно 13:00–00:00; ресторан начинает dinner в 17:00.</p><div class="op-note"><strong>Лучший формат для нас:</strong> после Prison Tour зайти внутрь Malmaison, посмотреть тюремную галерею и выпить кофе/напиток или сделать ранний ужин. Не нужно бронировать ночь только ради здания.</div><div class="op-actions"><a href="https://www.malmaison.com/locations/oxford/" target="_blank" rel="noopener">Malmaison Oxford</a><a href="https://www.malmaison.com/locations/oxford/rooms-suites/standard-cell-room/" target="_blank" rel="noopener">Как выглядит Cell Room</a></div></article>
+
+      <article class="op-card searchable" data-search="private tour group ten oxford castle prison 22 pounds evening"><div class="op-kicker">Для группы от 10 · £22/чел · 60–90 минут</div><h3>Private Prison Tour — очень подходит размеру нашей группы</h3><p>У Oxford Castle & Prison есть частный костюмированный тур с отдельным гидом: tower + crypt + prison cells, плюс напиток. Минимум как раз <strong>10 человек</strong>, цена ориентировочно £22 с человека. Вечерние туры идут с 18:00, но организаторы также пишут, что private tour можно согласовать и днём.</p><div class="op-note"><strong>Для 15 августа:</strong> вечерний вариант нам не подходит — слишком близко к Romeo & Juliet в 19:30. Но если вдруг есть дневной private slot, это сильнее обычной экскурсии, потому что вы идёте своей группой.</div><div class="op-actions"><a href="https://www.oxfordcastleandprison.co.uk/venue-hire/private-tours/" target="_blank" rel="noopener">Private Tour</a></div></article>
+
+      <article class="op-card searchable" data-search="spectre ghost tour friday 18:30 oxford castle prison"><div class="op-kicker">Тематический вариант · 1 ч 30 мин</div><h3>Spectre Ghost Tour</h3><p>Театрализованная прогулка по тёмной стороне Oxford с paranormal‑гидом: городские призраки, казни, преступления и местный фольклор. В 2026 тур идёт по пятницам в 18:30; взрослый билет около £15.75, ребёнок £10.50.</p><div class="op-note"><strong>Но:</strong> 15 августа — суббота, поэтому в наш Oxford‑день он не попадает. На сайт оставляю как интересный вариант «если даты когда‑нибудь сдвинутся», но не как реальный пункт этого дня.</div></article>
+
+      <article class="op-card searchable" data-search="jailbreak escape room oxford castle prison 10 18 people 30 pounds"><div class="op-kicker">Настоящая камера · 1 час · 12+</div><h3>Jailbreak Escape Room</h3><p>Команду запирают в настоящей тюремной камере под присмотром «warden»: нужно за час решить коды и загадки и выбраться. Формат рассчитан на <strong>10–18 человек</strong>, то есть идеально совпадает с нашей компанией; цена около £30 с человека.</p><div class="op-note"><strong>На эту поездку уже не успеваем:</strong> требуется бронировать минимум за 14 дней. Но как концепт это одна из самых нестандартных Oxford‑активностей, поэтому на сайте она должна быть.</div><div class="op-actions"><a href="https://www.oxfordcastleandprison.co.uk/venue-hire/jailbreak-escape-room/" target="_blank" rel="noopener">Jailbreak</a></div></article>
+
+      <article class="op-card searchable" data-search="murder mystery oxford prison 15 people 46 pounds 19:00"><div class="op-kicker">Тематический вечер · 15+ · 2 часа</div><h3>Murder Mystery в тюрьме</h3><p>Актёры‑«заключённые», ложные показания и расследование убийства прямо в тюремных коридорах. Стоимость около £46 с человека, начало с 19:00, продолжительность примерно 2 часа.</p><div class="op-note"><strong>Не для нашей даты:</strong> минимум 15 гостей, бронь минимум за 14 дней и прямой конфликт с Romeo & Juliet. Добавляю как справочную необычную опцию, но в план 15 августа не ставлю.</div><div class="op-actions"><a href="https://www.oxfordcastleandprison.co.uk/venue-hire/murder-mystery-events/" target="_blank" rel="noopener">Murder Mystery</a></div></article>
+
+      <article class="op-card wide searchable" data-search="oxford castle itinerary malmaison romeo juliet route"><div class="op-kicker">Самая логичная связка на 15 августа</div><h3>Как я бы перестроила последние часы Oxford</h3><p><strong>15:40/16:00</strong> Oxford Castle & Prison Guided Tour → <strong>17:15–18:25</strong> Malmaison / Chez Mal Bar или ранний dinner → <strong>18:45</strong> вход на площадку → <strong>19:30</strong> Romeo & Juliet.</p><p>Это очень удачный финал дня: вы не бегаете через весь Oxford перед спектаклем, а последние три пункта находятся практически в одном историческом комплексе. И история места работает в несколько слоёв: средневековый замок → тюрьма → boutique hotel → вечером Shakespeare во дворе.</p><div class="op-actions"><a href="https://www.google.com/maps/dir/?api=1&origin=Covered+Market,+Oxford&destination=Oxford+Castle+and+Prison&travelmode=walking" target="_blank" rel="noopener">Covered Market → Prison</a><a href="https://www.google.com/maps/dir/?api=1&origin=Oxford+Castle+and+Prison&destination=Malmaison+Oxford&travelmode=walking" target="_blank" rel="noopener">Prison → Malmaison</a></div></article>
+    </div>`;
+
+  const head = oxford.querySelector('.section-head') || oxford.firstElementChild;
+  if (head) head.insertAdjacentElement('afterend', sec); else oxford.prepend(sec);
+})();
